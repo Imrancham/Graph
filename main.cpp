@@ -47,249 +47,63 @@
 #include <map>
 #include "graph.hpp"
 
-//template<typename T>
-
-//// Define a graph class/
-//class Graph {
-//
-//private:
-//    int numberOfVertices;
-//    int numberOfEdges;
-//    std::vector<std::vector<int>> adjList;
-//
-//public:
-////    Constructors
-//    Graph(int n): numberOfVertices(n), numberOfEdges (0), adjList(n){};
-//
-//    Graph(std::vector<std::vector<int>> list){
-//        adjList = list;
-//        int n = 0;
-//        for ( auto i = list.begin(); i != list.end(); i++)
-//        {
-//            n++;
-//        }
-//        numberOfVertices = n;
-//
-//        int degreeSum = 0;
-//        for ( int i =0; i<n; i++){
-//            degreeSum += this->degree(i);
-//        }
-//
-//            numberOfEdges = degreeSum/2 ;
-//
-//    }
-//
-////    Add an Edge [a,b]
-//    void add_Edge (int a , int b)
-//    {
-//        if (a==b)adjList[a].push_back(b);
-//        else
-//        {
-//            adjList[a].push_back(b);
-//            adjList[b].push_back(a);
-//        }
-//        ++numberOfEdges;
-//
-//    }
-//
-////
-//
-//    int getNumberOfEdges() const {return numberOfEdges;}
-//
-////Print the neighbors of a node.
-//    void adjOfNode(int node){
-//        std::cout<<node<<"->";
-//        for (auto & x : adjList[node]){
-//            std::cout<<x<< " ";
-//        }
-//    }
-//
-////   Remove an Edge.
-//    void remove_Edge(int a, int b)
-//    {
-//
-//        if(a==b)
-//            for(auto i = adjList[a].begin(); i != adjList[a].end(); i++)
-//            {
-//                if (*i == b) {
-//                    adjList[a].erase(i);
-//                    i--;
-//                }
-//            }
-//
-//        else
-//        {
-//            for(auto i = adjList[a].begin(); i != adjList[a].end(); i++){
-//                if (*i == b) {
-//                    adjList[a].erase(i);
-//                    i--;
-//                }
-//            }
-//            for(auto i = adjList[b].begin(); i != adjList[b].end(); i++)
-//            {
-//                if (*i == a) {
-//                    adjList[b].erase(i);
-//                    i--;
-//                   }
-//            }
-//        }
-//        numberOfEdges--;
-//    }
-////    Degree of a node.
-//    int degree(int v)
-//    {
-//        int degree =0 ;
-//        for (auto i = adjList[v].begin(); i!= adjList[v].end() ; i++){
-//            degree += (*i == v) ? 2 : 1;
-//        }
-//
-//
-//        return degree;
-//    }
-//
-////    In Degree Of a Vertex.
-//    int InDegree(int v)
-//    {
-//        int degree = 0;
-//        std::vector<std::vector<int>>::iterator row;
-//        std::vector<int>::iterator cal;
-//        for (row = adjList.begin(); row < adjList.end() ; row++)
-//        {
-//            for (cal = row->begin(); cal < row->end(); cal++)
-//            {
-//                if(*cal == v) degree++;
-//            }
-//        }
-//        return degree;
-//    }
-//
-//
-////      Componant of a node. E_G(v)
-//    std::vector<int> reachable(int fromNodeX , int mark)
-//    {
-//        std::vector<int> reached;
-//        std::vector<int> L;
-//
-//        int* marked = new int[numberOfVertices];
-//        marked[fromNodeX] = mark;
-//        L.push_back(fromNodeX);
-//        reached.push_back(fromNodeX);
-//        while (!L.empty()) {
-//            int x = L.at(0);
-//            std::vector<int>::iterator it;
-//            it = L.begin();
-//            L.erase(it);
-//            for (auto i =adjList[x].begin(); i!= adjList[x].end() ; i++)
-//            {
-//                if(marked[*i] != mark)
-//                {
-//                    marked[*i] = mark;
-//                    L.push_back(*i);
-//                    reached.push_back(*i);
-//                }
-//            }
-//
-//        }
-//
-//        return reached;
-//    }
-//
-////    Topological sorting
-////
-//    std::map<int, int> TopoSort()
-//    {
-//        std::map<int,int> sorting;
-//        std::map<int, int> sort;
-//        std::map<int, int> inDegree;
-//        std::vector<int> L;
-//        for (auto i =0; i< numberOfVertices; ++i)
-//        {
-//            inDegree.emplace(i, InDegree(i));
-//            if(InDegree(i)==0) L.push_back(i);
-//        }
-//        std::vector<int>::iterator iter;
-//        iter = L.begin();
-//        for(int i =0 ; i<numberOfVertices; i++)
-//        {
-//            sorting.emplace(L[0], i);
-//            if (i+1 == numberOfVertices) return sorting;
-//            int k = *iter;
-//            L.erase(iter);
-//
-//
-//            for (auto j = adjList[k].begin(); j!= adjList[k].end(); j++)
-//            {
-//                inDegree[*j]--;
-//                if(inDegree[*j] == 0)
-//                    L.push_back(*j);
-//            }
-//            if(L.empty())
-//            {
-//                std::cout<<"ther is no T.S.";
-//                return sort;
-//            }
-//
-//        }
-//        return sorting;
-//
-//    }
-//
-//};
-
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-//  G , G2, G3 different graphs;
+   
+// Test cases G , G2, G3, G4 are different graphs;
     
-    int x = 4;
-    Graph G1(x);
+    
+    std::vector<std::vector<int>> list = {{1,2,0},{0}, {0,2},{}};
+    std::vector<std::vector<int>> list2 = {{1}, {2,3}, {}, {2}};
+    std::vector<std::vector<int>> list3 = {{1,2}, {3,4}, {5,6}, {7,8}, {9,10}, {11,12}, {13,14}, {}, {}, {}, {}, {} ,{}, {}, {}};
+    std::vector<std::vector<int>> list4 = {{1}, {2}, {3}};
+    Graph G(list);
+    Graph G2(list2);
+    Graph G3(list3);
+    Graph G4(list4);
+    
+    int numOfNodes = 4;
+    Graph G1(numOfNodes);
+//     Defining the edges.
     G1.add_Edge(1, 2);
     G1.add_Edge(2, 3);
     G1.add_Edge(3, 1);
     G1.add_Edge(0, 3);
     G1.add_Edge(3, 3);
-//    G1.add_Edge(3, 4);
-    
-    std::vector<std::vector<int>> list = {{1,2,0},{0}, {0,2},{}};
-    Graph G(list);
-    
-    std::vector<std::vector<int>> list2 = {{1}, {2,3}, {}, {2}};
-    Graph G2(list2);
-    
-    std::vector<std::vector<int>> list3 = {{1,2}, {3,4}, {5,6}, {7,8}, {9,10}, {11,12}, {13,14}, {}, {}, {}, {}, {} ,{}, {}, {}};
-    Graph G3(list3);
-    
-    std::vector<std::vector<int>> list4 = {{1}, {2}, {3}};
-    Graph G4(list4);
-    
 
     
-    
-    std::cout<<G1.getNumberOfEdges()<<'\n';
+    std::cout<<"Number of Edges in G1 is: "<<G1.getNumberOfEdges()<<std::endl;
+    std::cout<<"print the nodes which are adjacent to (3) in G1"<<std::endl;
     G1.adjOfNode(3);
-     std::cout<<'\n';
+     std::cout<<std::endl;
     
-    std::cout<<"degree of "<< 3 <<" is: "<< G1.degree(3)<<std::endl;
+    std::cout<<"In G1 degree of (3) is: "<< G1.degree(3)<<std::endl;
     
+    std::cout<<"print the nodes which are adjacent to (0) in G1"<<std::endl;
     G1.adjOfNode(0);
-    std::cout<<'\n';
+    std::cout<<std::endl;
     
 //    G.remove_Edge(3, 0);
+    std::cout<<"print the nodes which are adjacent to (3) in G "<<std::endl;
     G.adjOfNode(3);
-    std::cout<<"degree of "<< 3 <<"is: "<< G1.degree(3)<<std::endl;
-    std::cout<<'\n';
+    std::cout<<"In G degree of  3 is: "<< G.degree(3)<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"print the nodes which are adjacent to (0) in G "<<std::endl;
     G1.adjOfNode(0);
     
-    std::cout<<'\n';
-    std::cout<<G.getNumberOfEdges()<<'\n';
-    std::cout<<"Nodes are Reachable from x ->";
+    std::cout<<std::endl;
+    std::cout<<"Number of Edges in G is: "<<G.getNumberOfEdges()<<std::endl;
+    
+    std::cout<<"In G Nodes which are Reachable from x ->";
     std::vector<int> reachable = G.reachable(2, 9);
+    
     for(auto i = reachable.begin(); i!= reachable.end(); i++)
     {
         std::cout<<*i;
     }
     std::cout<<std::endl;
 //    ///////////////
+//     toptogical sotring 
     std::map<int,int> sort1 = G1.TopoSort();
     std::cout<<"Toplogical sorting of G1"<<std::endl;
     
