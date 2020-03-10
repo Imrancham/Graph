@@ -199,3 +199,60 @@ int Graph::getNumberOfEdges() const {return numberOfEdges ;}
         return sorting;
         
     }
+
+
+//    Findding Elementary cycle start at vertex v.
+std::vector<int> Graph::explorCycleAtV( int vertex ,std::vector<int>::const_iterator current[] )
+{
+    std::vector<int> cycle;
+//    std::vector<int>::const_iterator current[numberOfVertices];
+//
+//    for ( int i = 0 ; i < numberOfVertices ; i++)
+//    {
+//        current[i] = adjList[i].begin();
+//    }
+    
+    int u = *current[vertex];
+    current[vertex]++;
+    
+    cycle.push_back(vertex);
+    cycle.push_back(u);
+    
+    while (u != vertex) {
+        int w = *current[u];
+        current[u]++;
+        cycle.push_back(w);
+        u = w;
+    }
+    
+    return cycle;
+}
+
+std::vector<int> Graph::Euler()
+{
+    std::vector<int> EulerCycle;
+//    EulerCycle.push_back(0);
+    std::vector<int> cycle;
+    std::vector<int>::const_iterator current[numberOfVertices];
+//    std::vector<int>::iterator iter = EulerCycle.begin();
+    
+    for ( int i = 0 ; i < numberOfVertices ; i++)
+    {
+        current[i] = adjList[i].begin();
+    }
+    
+    int v = 0;
+    int i =0;
+    do {
+        while (current[v] != adjList[v].end() )
+        {
+            cycle = explorCycleAtV(v, current);
+//            EulerCycle.pop_back();            
+            EulerCycle.insert( EulerCycle.end(), cycle.begin(), cycle.end() );
+        }
+        i++;
+        v= EulerCycle[i];
+    } while (v!=0);
+    
+    return EulerCycle;
+}
