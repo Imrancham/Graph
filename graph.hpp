@@ -50,6 +50,12 @@ public:
 //    Topological sorting
     //
     std::map<int, int> TopoSort();
+   
+//    Findding Elementary cycle start at vertex v in a digraph.
+    std::vector<int> explorCycleAtV( int vertex , std::vector<int>::const_iterator current[] );
+    
+//    Find an Eulerian Cycle in a digraph.
+    std::vector<int> Euler();
     
 private:
     int numberOfVertices;
