@@ -5,11 +5,11 @@
 //This file is to class  graph and algorimths consist of:
 // Defining a graph in adjecincy list.
 // Graph algo:
-// 1.1 degree. & InDegree done
-// 1.2 Componant of a graph. Done
-// 1.3 Finding a Topological Sorting Digraph. Done
-// 1.4 Cycle of unused Edge
-// 1.5 Finding Eulerian Cycle.
+// 1.1 degree. & InDegree...................................Done
+// 1.2 Componant of a graph................................ Done
+// 1.3 Finding a Topological Sorting Digraph............... Done
+// 1.4 Cycle of unused Edge................................ Done
+// 1.5 Finding Eulerian Cycle.............................. Done
 //
 // 2.1 Simple sequintial Coloring Algorithm
 // 2.2 Check perfect elimination scheme.
@@ -54,12 +54,12 @@ int main(int argc, const char * argv[]) {
     
     
     std::vector<std::vector<int>> list = {{1,2,0},{0}, {0,2},{}};
-    std::vector<std::vector<int>> list2 = {{1}, {2,3}, {}, {2}};
-    std::vector<std::vector<int>> list3 = {{1,2}, {3,4}, {5,6}, {7,8}, {9,10}, {11,12}, {13,14}, {}, {}, {}, {}, {} ,{}, {}, {}};
+    std::vector<std::vector<int>> list2 = {{1}, {4,3}, {1}, {2}, {5}, {0}};
+    std::vector<std::vector<int>> list3 = {{1,2}, {3,4}, {5,6}, {7,8}, {9,10}, {11,12}, {13,14}, {}, {}, {}, {}, {} ,{}, {}, {}}; // Rooted Binary tree.
     std::vector<std::vector<int>> list4 = {{1}, {2}, {3}};
     Graph G(list);
-    Graph G2(list2);
-    Graph G3(list3);
+    Graph G2(list2); // Digraph with cycle
+    Graph G3(list3); // Rooted Binary tree.
     Graph G4(list4);
     
     int numOfNodes = 4;
@@ -127,6 +127,13 @@ int main(int argc, const char * argv[]) {
            std::cout<<iter->first << " "<<iter->second<<'\n';
        }
 
+   
+   std::vector<int> cycle = G2.Euler();
+   std::cout<<" Cycle strart at 2 in G2 is given by: "; 
+   for (auto i : cycle) // Printing the Eulerian Cycel
+        std::cout<<i <<" ";
+   
+   
   std::cout<<std::endl;
     return 0;
 }
