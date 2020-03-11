@@ -2,7 +2,7 @@
 Graph Algorithms:
 
 A class graph describes a graph (directed or undirected) which is defined by number of nodes, number of edges and  given by an adjacency list
-as a vector of integers i.e. vestor< vector < int > >, as a privet element, Where each row represents the adjacencey list
+as a vector of integers i.e. vestor< vector < int > >, Where each row represents the adjacencey list
 of its corresponding node.
 
 Each objcet (graph) can be initilized by one of the following constructors:
