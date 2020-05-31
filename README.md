@@ -10,7 +10,7 @@ Each objcet (graph) can be initilized by one of the following constructors:
 and then adding each edge [a,b] by the method -> add_Edge (int a , int b);
 2. Given the Adj. List -> Graph(std::vector<std::vector<int>> list); (For dirgraph)
 
-Methods are available till now:
+Functions:
 
 1. Add an edge: void add_Edge (int a , int b);
 2. Remove an edge: void remove_Edge(int a, int b);
@@ -22,6 +22,7 @@ Methods are available till now:
 1.3 Finding a Topological Sorting Digraph............... Done
 1.4 Cycle of unused Edge................................ Done
 1.5 Finding Eulerian Cycle.............................. Done
+
 //
 // 2.1 Simple sequintial Coloring Algorithm
 // 2.2 Check perfect elimination scheme.
